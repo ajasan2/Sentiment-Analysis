@@ -73,7 +73,7 @@ bool stopWord (const string &token) {
 
 // Comparator for sorting
 bool cmp(pair<string, int>& a, pair<string, int>& b) {
-    return a.second < b.second;
+    return a.second > b.second;
 }
 
 // Processes a dataset file and scores the products based on sentiments in the reviews
@@ -89,15 +89,15 @@ void sent_analysis(string filename, vector<pair<string, int>>& allProducts,
 
     while(!inReviews.eof()) {
         getline(inReviews, name, '"');
-        if (name.empty()) {
+        if (name.empty()) { // name has embedded comma
             getline(inReviews, name, '"');
         }
-        getline(inReviews, tempStr, ','); // skip comma
-        getline(inReviews, tempStr, ','); // skip rating
+        getline(inReviews, tempStr, ',');
+        getline(inReviews, tempStr, ',');
         getline(inReviews, review, '"');
-        if (review.empty()) { // review has embedded commas, extract again
+        if (review.empty()) { // review has embedded comma
             getline(inReviews, review, '"');
-            getline(inReviews, tempStr); // extract newline char
+            getline(inReviews, tempStr);
         }
 
         // If this is the first or a different product, create a new entry
@@ -111,10 +111,10 @@ void sent_analysis(string filename, vector<pair<string, int>>& allProducts,
         unordered_set<string> tokenSet = gatherTokens(review);
         for (auto& s : tokenSet) {
             if (positives.count(s)) {
-                allProducts[index].second += 5;
+                allProducts[index].second += 3;
             }
             else if (negatives.count(s)) {
-                allProducts[index].second -= 5;
+                allProducts[index].second -= 3;
             }
         }
     } // end file reading
