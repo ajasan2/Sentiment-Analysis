@@ -32,7 +32,13 @@ int main() {
     sent_analysis("Product Review Dataset.csv", allProducts, positives, negatives);
     sent_analysis("Product Review Dataset 2.csv", allProducts, positives, negatives);
     sent_analysis("Product Review Dataset 3.csv", allProducts, positives, negatives);
-
     sort(allProducts.begin(), allProducts.end(), cmp);
+
+    // Top 10 products
+    cout << "========= TOP 10 =========" << endl;
+    for (int i = 0; i < 10; i++) {
+        cout << i+1 << ". " << allProducts[i].first << endl;
+    }
+
     return 0;
 }
