@@ -1,6 +1,15 @@
 #include <algorithm>
 #include "functions.h"
 
+// This project aims to develop a sentiment analysis system for product rating. The main goal of this system is to
+// understand the hidden sentiments of customers in feedback and comments and analyze their product rating patterns.
+// When customers use this app to view products, product features, and comment on different products, the sentiment
+// analysis system will analyze the comments of various users and ranks products accordingly. The system leverages
+// a database of sentiment-based keywords (positively or negatively weighed). When a user comments on a particular
+// product, the sentiment analysis system analyzes the keywords in the comment to find the match with the keywords
+// stored in the database. After analyzing the matches against the positive and negative keywords and sentiments,
+// the system ranks a product by adding or removing from the score, respectively.
+
 // Data Source
 // Word sentiments: https://www.kaggle.com/datasets/mukulkirti/positive-and-negative-word-listrar
 // Product Reviews: https://www.kaggle.com/datasets/datafiniti/consumer-reviews-of-amazon-products
